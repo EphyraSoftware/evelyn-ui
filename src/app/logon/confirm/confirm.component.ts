@@ -40,6 +40,8 @@ export class ConfirmComponent implements OnInit {
     payload.confirmKey = this.token;
     this.http.post(environment.serverUrl + '/users/confirm', payload).subscribe(data => {
       console.log(data);
+      // TODO this needs to be a token from the server.
+      localStorage.setItem('token', 'loggedon');
       this.router.navigate(['/dashboard']);
     });
   }

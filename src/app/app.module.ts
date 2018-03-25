@@ -11,6 +11,8 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MatButtonModule } from '@angular/material';
+import { AuthModule } from './auth/auth.module';
+import { SignInGuardService as SignInGuard } from './auth/sign-in-guard.service';
 
 const appRoutes: Routes = [
   {
@@ -32,7 +34,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [SignInGuard]
   },
   {
     path: '**',
@@ -51,6 +54,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     LogonModule,
     DashboardModule,
+    AuthModule,
     MatButtonModule
   ],
   providers: [],
