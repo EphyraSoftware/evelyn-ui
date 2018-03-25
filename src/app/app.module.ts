@@ -9,6 +9,8 @@ import { ConfirmComponent } from './logon/confirm/confirm.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MatButtonModule } from '@angular/material';
 
 const appRoutes: Routes = [
   {
@@ -31,12 +33,17 @@ const appRoutes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +51,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     LogonModule,
     DashboardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
