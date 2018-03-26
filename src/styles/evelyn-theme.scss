@@ -1,7 +1,12 @@
 .wide-form {
-    width: 35%;
+    width: 25%;
 
     .wide-form-field {
         display: block;
     }
+}
+
+.full-screen-component {
+    background-color: $login-background-color !important;
+    height: 100vh;
 }
