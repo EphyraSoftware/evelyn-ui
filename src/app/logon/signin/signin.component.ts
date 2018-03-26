@@ -12,8 +12,7 @@ class SIgnInModel {
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
   model: SIgnInModel;
