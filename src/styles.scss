@@ -1,2 +1,6 @@
+@import 'styles/bootstrap-overrides.scss';
 @import '~bootstrap/scss/bootstrap.scss';
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import 'styles/evelyn-theme-variables.scss';
+@import 'styles/evelyn-theme.scss';
