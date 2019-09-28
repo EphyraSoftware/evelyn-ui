@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-
+  serviceUrl: 'http://localhost:8085',
   keycloakConfig: {
     url: 'http://localhost:9083/auth/',
     realm: 'evelyn-services-realm',

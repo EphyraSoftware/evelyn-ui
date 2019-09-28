@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, DoBootstrap } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {DoBootstrap, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { environment } from 'src/environments/environment';
-import { HomeComponent } from './home/home/home.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
+import {environment} from 'src/environments/environment';
+import {HomeComponent} from './home/home/home.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const keycloakService = new KeycloakService();
 
@@ -18,6 +19,7 @@ const keycloakService = new KeycloakService();
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     KeycloakAngularModule
   ],
   providers: [{
@@ -28,8 +30,6 @@ const keycloakService = new KeycloakService();
 })
 export class AppModule implements DoBootstrap {
   ngDoBootstrap(app) {
-    console.log('doing bootstrap');
-
     keycloakService
       .init({
         config: environment.keycloakConfig,
