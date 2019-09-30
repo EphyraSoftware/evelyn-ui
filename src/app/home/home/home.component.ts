@@ -19,4 +19,9 @@ export class HomeComponent implements OnInit {
   send() {
     this.value$ = this.httpClient.get(`${environment.serviceUrl}/test`);
   }
+
+  logout() {
+    const opts = `redirect_uri=${environment.selfUrl}`;
+    window.location.href = `http://localhost:9083/auth/realms/${environment.keycloakConfig.realm}/protocol/openid-connect/logout?${opts}`;
+  }
 }
