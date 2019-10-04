@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
-import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+
+interface Profile {
+  newRegistration: string;
+  nickname: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -9,15 +13,18 @@ import {Observable} from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  private value$: Observable<any>;
+  message: string;
 
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-  }
-
-  send() {
-    this.value$ = this.httpClient.get(`${environment.serviceUrl}/test`);
+    this.httpClient.get(`${environment.profileServiceUrl}/profiles`).subscribe((profile: Profile) => {
+      if (profile.newRegistration) {
+        this.message = 'Welcome to Evelyn!';
+      } else {
+        this.message = 'Welcome back, Evelyn missed you!';
+      }
+    });
   }
 
   logout() {

@@ -5,21 +5,24 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import {environment} from 'src/environments/environment';
-import {HomeComponent} from './home/home/home.component';
+import {HomeComponent} from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
+import {ProfileComponent} from './profile/profile.component';
+import {FormsModule} from '@angular/forms';
 
 const keycloakService = new KeycloakService();
-
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     KeycloakAngularModule
   ],
   providers: [{

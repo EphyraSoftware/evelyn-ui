@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   serviceUrl: 'http://localhost:8085',
+  profileServiceUrl: 'http://localhost:8081',
   selfUrl: 'http://localhost:4200',
   keycloakConfig: {
     url: 'http://localhost:9083/auth/',
