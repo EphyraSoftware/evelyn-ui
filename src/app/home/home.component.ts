@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get(`${environment.profileServiceUrl}/profiles`).subscribe((profile: Profile) => {
+    this.httpClient.get(`${environment.serviceUrl}/profiles`).subscribe((profile: Profile) => {
       if (profile.newRegistration) {
         this.message = 'Welcome to Evelyn!';
       } else {

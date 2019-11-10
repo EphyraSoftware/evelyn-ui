@@ -18,13 +18,13 @@ export class ProfileComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.httpClient.get(`${environment.profileServiceUrl}/profiles`).subscribe((profile: Profile) => {
+    this.httpClient.get(`${environment.serviceUrl}/profiles`).subscribe((profile: Profile) => {
       this.profile = profile;
     });
   }
 
   saveProfile() {
-    this.httpClient.put(`${environment.profileServiceUrl}/profiles`, this.profile).subscribe(result => {
+    this.httpClient.put(`${environment.serviceUrl}/profiles`, this.profile).subscribe(result => {
       console.log(result);
     });
   }
