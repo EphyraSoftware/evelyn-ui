@@ -8,11 +8,11 @@ resource "tls_self_signed_cert" "keycloak_certificate" {
   private_key_pem = tls_private_key.keycloak_key.private_key_pem
 
   subject {
-    common_name  = "ui.evelyn.dev"
+    common_name  = "app.evelyn.internal"
     organization = "EphyraSoftware"
   }
 
-  dns_names = ["ui.evelyn.dev"]
+  dns_names = ["app.evelyn.internal"]
 
   validity_period_hours = 2190 // Three months
 
