@@ -7,10 +7,12 @@ import {KeycloakAngularModule, KeycloakService} from 'keycloak-angular';
 import {environment} from 'src/environments/environment';
 import {HomeComponent} from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
-import {ProfileComponent} from './profile/profile.component';
+import {ManageProfileComponent} from './profile/manage-profile/manage-profile.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CreateTaskComponent} from './task/create-task/create-task.component';
 import {ManageTasksComponent} from './task/manage-tasks/manage-tasks.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ProfileSummaryComponent} from './profile/profile-summary/profile-summary.component';
 
 const keycloakService = new KeycloakService();
 
@@ -18,9 +20,10 @@ const keycloakService = new KeycloakService();
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent,
+    ManageProfileComponent,
     CreateTaskComponent,
-    ManageTasksComponent
+    ManageTasksComponent,
+    ProfileSummaryComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ const keycloakService = new KeycloakService();
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    NgbModule
   ],
   providers: [{
     provide: KeycloakService,

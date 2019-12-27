@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppAuthGuard} from './auth/app-auth-guard.guard';
 import {HomeComponent} from './home/home.component';
-import {ProfileComponent} from './profile/profile.component';
+import {ManageProfileComponent} from './profile/manage-profile/manage-profile.component';
 
 const routes: Routes = [{
   path: '',
@@ -14,7 +14,7 @@ const routes: Routes = [{
   canActivate: [AppAuthGuard]
 }, {
   path: 'profile',
-  component: ProfileComponent,
+  component: ManageProfileComponent,
   canActivate: [AppAuthGuard]
 }];
 

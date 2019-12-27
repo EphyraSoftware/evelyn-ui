@@ -7,13 +7,11 @@ import {TaskService} from '../task.service';
   styleUrls: ['./manage-tasks.component.scss']
 })
 export class ManageTasksComponent implements OnInit {
-  tasks: object;
+  tasks$: object;
 
   constructor(private taskService: TaskService) { }
 
   ngOnInit() {
-    this.taskService.getTasks().subscribe(response => {
-      this.tasks = response;
-    });
+    this.tasks$ = this.taskService.getTasks();
   }
 }

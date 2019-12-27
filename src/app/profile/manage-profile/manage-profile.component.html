@@ -1,0 +1,15 @@
+<div class="container">
+  <h5>Your profile helps Evelyn to understand who you are.</h5>
+
+  <div *ngIf="profile">
+    <form [formGroup]="profileForm">
+      <div class="form-group">
+        <label for="nickname">Nickname</label>
+        <input type="text" class="form-control" id="nickname" maxlength="50" formControlName="nickname" />
+      </div>
+      <button type="button" class="btn btn-primary" (click)="saveProfile()">Save</button>
+    </form>
+  </div>
+
+  <a routerLink="/home">Home</a>
+</div>

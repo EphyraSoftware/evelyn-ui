@@ -1,6 +1,20 @@
-<p>Hello, Evelyn</p>
-<p>{{ message }}</p>
-<app-create-task></app-create-task>
-<app-manage-tasks></app-manage-tasks>
-<a routerLink="/profile">My Profile</a>
-<button (click)="logout()">Logout</button>
+<div class="container">
+  <div class="row mt-1 mb-2">
+    <div class="col-sm">
+      <h2>Evelyn</h2>
+    </div>
+    <div class="col-sm">
+      <button class="btn btn-primary float-right" (click)="logout()">Logout</button>
+    </div>
+  </div>
+  <div class="row mb-2">
+    <div class="col-sm">
+      <app-profile-summary></app-profile-summary>
+    </div>
+    <div class="col-sm"></div>
+    <div class="col-sm">
+      <app-create-task></app-create-task>
+    </div>
+  </div>
+  <app-manage-tasks></app-manage-tasks>
+</div>

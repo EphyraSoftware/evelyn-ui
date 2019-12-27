@@ -1,10 +1,12 @@
-<h5>New task</h5>
+<h5>Create a new task</h5>
 <form [formGroup]="newTaskForm">
-  <label for="title">Title</label>
-  <input type="text" name="title" id="title" formControlName="title" />
-
-  <label for="">Description</label>
-  <input type="text" name="description" id="description" formControlName="description" />
-
-  <input type="button" value="Create" (click)="createTask()" />
+  <div class="form-group">
+    <label for="titleInput">Title</label>
+    <input type="text" class="form-control" id="titleInput" maxlength="50" formControlName="title" />
+  </div>
+  <div class="form-group">
+    <label for="descriptionTextArea">Description</label>
+    <textarea class="form-control" id="descriptionTextArea" formControlName="description"></textarea>
+  </div>
+  <button type="button" class="btn btn-primary" (click)="createTask()">Create</button>
 </form>

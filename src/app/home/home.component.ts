@@ -1,11 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-
-interface Profile {
-  newRegistration: string;
-  nickname: string;
-}
+import {ProfileService} from '../profile/profile.service';
 
 @Component({
   selector: 'app-home',
@@ -13,22 +7,12 @@ interface Profile {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  message: string;
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
-    this.httpClient.get(`${environment.serviceUrl}/profiles`).subscribe((profile: Profile) => {
-      if (profile.newRegistration) {
-        this.message = 'Welcome to Evelyn!';
-      } else {
-        this.message = 'Welcome back, Evelyn missed you!';
-      }
-    });
   }
 
   logout() {
-    const opts = `redirect_uri=${environment.selfUrl}`;
-    window.location.href = `${environment.keycloakConfig.url}realms/${environment.keycloakConfig.realm}/protocol/openid-connect/logout?${opts}`;
+    this.profileService.logout();
   }
 }
