@@ -8,7 +8,8 @@ import {environment} from 'src/environments/environment';
 import {HomeComponent} from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ProfileComponent} from './profile/profile.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { TaskComponent } from './task/task/task.component';
 
 const keycloakService = new KeycloakService();
 
@@ -16,11 +17,13 @@ const keycloakService = new KeycloakService();
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    TaskComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
     KeycloakAngularModule
