@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev": "ng serve --configuration=edge --host=app.evelyn.internal --ssl=true --sslKey=tls\\tls.key --sslCert=tls\\tls.crt"
+    "edge": "ng serve --configuration=edge --host=app.evelyn.internal --ssl=true --sslKey=tls\\tls.key --sslCert=tls\\tls.crt"
   },
   "private": true,
   "dependencies": {

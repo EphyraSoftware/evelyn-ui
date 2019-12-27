@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://localhost:8085',
+  serviceUrl: 'http://localhost:8080',
   selfUrl: 'http://localhost:4200',
   keycloakConfig: {
     url: 'http://localhost:9083/auth/',
