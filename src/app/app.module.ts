@@ -9,7 +9,8 @@ import {HomeComponent} from './home/home.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ProfileComponent} from './profile/profile.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { TaskComponent } from './task/task/task.component';
+import {CreateTaskComponent} from './task/create-task/create-task.component';
+import {ManageTasksComponent} from './task/manage-tasks/manage-tasks.component';
 
 const keycloakService = new KeycloakService();
 
@@ -18,7 +19,8 @@ const keycloakService = new KeycloakService();
     AppComponent,
     HomeComponent,
     ProfileComponent,
-    TaskComponent
+    CreateTaskComponent,
+    ManageTasksComponent
   ],
   imports: [
     BrowserModule,
