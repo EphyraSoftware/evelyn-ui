@@ -15,7 +15,12 @@ export class ProfileSummaryComponent implements OnInit {
   profile: Profile;
   message: string;
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService) {
+    this.profile = {
+      nickname: '',
+      newRegistration: ''
+    };
+  }
 
   ngOnInit() {
     this.profileService.getProfile().subscribe((profile: Profile) => {
