@@ -14,6 +14,7 @@ import {ManageTasksComponent} from './task/manage-tasks/manage-tasks.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ProfileSummaryComponent} from './profile/profile-summary/profile-summary.component';
 import {CalendarImportComponent} from './calendar/calendar-import/calendar-import.component';
+import {CalendarManagementComponent} from './calendar/calendar-management/calendar-management.component';
 
 const keycloakService = new KeycloakService();
 
@@ -25,7 +26,8 @@ const keycloakService = new KeycloakService();
     CreateTaskComponent,
     ManageTasksComponent,
     ProfileSummaryComponent,
-    CalendarImportComponent
+    CalendarImportComponent,
+    CalendarManagementComponent
   ],
   imports: [
     BrowserModule,
