@@ -12,4 +12,8 @@ export class CalendarService {
   getEvents() {
     return this.httpClient.get(`${environment.serviceUrl}/calendars/events`);
   }
+
+  createEvent(model: any) {
+    return this.httpClient.post(`${environment.serviceUrl}/calendars/events`, model);
+  }
 }
