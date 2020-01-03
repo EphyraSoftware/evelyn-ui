@@ -16,6 +16,7 @@ import {ProfileSummaryComponent} from './profile/profile-summary/profile-summary
 import {CalendarImportComponent} from './calendar/calendar-import/calendar-import.component';
 import {CalendarManagementComponent} from './calendar/calendar-management/calendar-management.component';
 import {CreateEventComponent} from './calendar/create-event/create-event.component';
+import {NotificationHostComponent} from './app-notifications/notification-host/notification-host.component';
 
 const keycloakService = new KeycloakService();
 
@@ -29,7 +30,8 @@ const keycloakService = new KeycloakService();
     ProfileSummaryComponent,
     CalendarImportComponent,
     CalendarManagementComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    NotificationHostComponent
   ],
   imports: [
     BrowserModule,

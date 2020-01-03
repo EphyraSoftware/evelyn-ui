@@ -1,0 +1,9 @@
+<ngb-toast
+  *ngFor="let appNotification of appNotificationService.notifications"
+  [header]="appNotification.title"
+  [autohide]="appNotification.autoHide || true"
+  [delay]="appNotification.delay || 5000"
+  (hide)="clearNotification(appNotification)"
+  aria-live="polite" aria-atomic="true">
+  {{ appNotification.content }}
+</ngb-toast>
