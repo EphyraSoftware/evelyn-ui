@@ -1,3 +1,18 @@
 <app-create-event></app-create-event>
 
 <em>{{ events$ | async | json }}</em>
+
+<div class="calendar-container">
+  <div class="days-row">
+    <p>Mon</p>
+    <p>Tue</p>
+    <p>Wed</p>
+    <p>Thu</p>
+    <p>Fri</p>
+    <p>Sat</p>
+    <p>Sun</p>
+  </div>
+  <div class="dates-row" *ngFor="let row of cellValues">
+    <div class="date-cell" *ngFor="let cell of row">{{ cell }}</div>
+  </div>
+</div>

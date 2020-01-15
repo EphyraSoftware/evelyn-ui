@@ -1,0 +1,19 @@
+.calendar-container {
+  .days-row {
+    display: flex;
+    flex-direction: row;
+
+    p {
+      padding: 2px;
+    }
+  }
+
+  .dates-row {
+    display: flex;
+    flex-direction: row;
+
+    .date-cell {
+      flex: 1;
+    }
+  }
+}
