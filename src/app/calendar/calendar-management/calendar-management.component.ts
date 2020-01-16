@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {CalendarService} from '../calendar.service';
 import * as moment from 'moment';
 
+interface CellValue {
+  value: string;
+  empty: boolean;
+}
+
 @Component({
   selector: 'app-calendar-management',
   templateUrl: './calendar-management.component.html',
@@ -33,18 +38,27 @@ export class CalendarManagementComponent implements OnInit {
 
     console.log(cellCount);
 
-    const cellValues = [];
+    const cellValues: CellValue[][] = [];
     for (let i = 0; i < cellCount; i++) {
       if (i % 7 === 0) {
         cellValues.push([]);
       }
 
       if (i < firstDayOfMonth - 1) {
-        cellValues[Math.floor(i / 7)].push('-');
+        cellValues[Math.floor(i / 7)].push({
+          value: '',
+          empty: true
+        });
       } else if (i < (firstDayOfMonth - 1) + daysInMonth) {
-        cellValues[Math.floor(i / 7)].push(i - (firstDayOfMonth - 1) + 1);
+        cellValues[Math.floor(i / 7)].push({
+          value: (i - (firstDayOfMonth - 1) + 1).toString(),
+          empty: true
+        });
       } else {
-        cellValues[Math.floor(i / 7)].push('-');
+        cellValues[Math.floor(i / 7)].push({
+          value: '',
+          empty: true
+        });
       }
     }
 
