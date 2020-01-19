@@ -15,6 +15,12 @@
 
     .date-cell {
       flex: 1;
+      min-height: 6rem;
+
+      .event-summary {
+        width: 95%;
+        text-align: left;
+      }
     }
   }
 }

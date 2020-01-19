@@ -3,8 +3,15 @@ import {CalendarService} from '../calendar.service';
 import * as moment from 'moment';
 
 interface CellValue {
-  value: string;
+  value: number;
   empty: boolean;
+  events: CalendarEvent[];
+}
+
+interface CalendarEvent {
+  summary: string;
+  description: string;
+  startDate: Date;
 }
 
 @Component({
@@ -14,29 +21,46 @@ interface CellValue {
 })
 export class CalendarManagementComponent implements OnInit {
   private events$;
-  private cellValues: any[];
+  private cellValues: CellValue[][];
+
+  SUMMARY_MAX_LENGTH = 20;
 
   constructor(private calendarService: CalendarService) {
     this.generateDays();
   }
 
   ngOnInit() {
-    this.events$ = this.calendarService.getEvents();
+    const today = moment();
+    const daysInMonth = today.daysInMonth();
+    const firstDayOfMonth = today.clone().date(1);
+    const lastDayOfMonth = today.clone().date(daysInMonth);
+
+    console.log(this.cellValues);
+
+    this.calendarService.getEvents().subscribe((events: CalendarEvent[]) => {
+      events.filter(event => {
+        return moment(event.startDate).isAfter(firstDayOfMonth) && moment(event.startDate).isBefore(lastDayOfMonth);
+      }).forEach(event => {
+        const startDay = moment(event.startDate).date();
+
+        this.cellValues.forEach(cellRow => {
+          cellRow.forEach(cellValue => {
+            if (cellValue.value === startDay) {
+              cellValue.events.push(event);
+            }
+          });
+        });
+      });
+    });
   }
 
   generateDays() {
     const today = moment();
 
-    console.log('day', today.day());
     const daysInMonth = today.daysInMonth();
-    console.log('days in month', daysInMonth);
     const firstDayOfMonth = today.clone().date(1).day();
-    console.log('first day of month', firstDayOfMonth);
-
     let cellCount = (firstDayOfMonth - 1) + daysInMonth;
     cellCount += 7 - cellCount % 7;
-
-    console.log(cellCount);
 
     const cellValues: CellValue[][] = [];
     for (let i = 0; i < cellCount; i++) {
@@ -46,18 +70,21 @@ export class CalendarManagementComponent implements OnInit {
 
       if (i < firstDayOfMonth - 1) {
         cellValues[Math.floor(i / 7)].push({
-          value: '',
-          empty: true
+          value: 0,
+          empty: true,
+          events: []
         });
       } else if (i < (firstDayOfMonth - 1) + daysInMonth) {
         cellValues[Math.floor(i / 7)].push({
-          value: (i - (firstDayOfMonth - 1) + 1).toString(),
-          empty: true
+          value: i - (firstDayOfMonth - 1) + 1,
+          empty: false,
+          events: []
         });
       } else {
         cellValues[Math.floor(i / 7)].push({
-          value: '',
-          empty: true
+          value: 0,
+          empty: true,
+          events: []
         });
       }
     }

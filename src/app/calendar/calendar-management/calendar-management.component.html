@@ -13,6 +13,13 @@
     <p>Sun</p>
   </div>
   <div class="dates-row" *ngFor="let row of cellValues">
-    <div class="date-cell" *ngFor="let cell of row">{{ cell.value }}</div>
+    <div class="date-cell" *ngFor="let cell of row">
+      <ng-container *ngIf="!cell.empty">
+        <span>{{ cell.value }}</span>
+        <div *ngFor="let event of cell.events">
+          <span class="badge badge-secondary event-summary">{{ (event.summary.length > SUMMARY_MAX_LENGTH) ? (event.summary | slice:0:(SUMMARY_MAX_LENGTH - 3)) + '...' : event.summary }}</span>
+        </div>
+      </ng-container>
+    </div>
   </div>
 </div>
