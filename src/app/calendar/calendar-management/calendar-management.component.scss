@@ -17,6 +17,10 @@
       flex: 1;
       min-height: 6rem;
 
+      .day {
+        cursor: pointer;
+      }
+
       .event-summary {
         width: 95%;
         text-align: left;

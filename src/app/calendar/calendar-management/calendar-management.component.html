@@ -1,7 +1,5 @@
 <app-create-event></app-create-event>
 
-<em>{{ events$ | async | json }}</em>
-
 <div class="calendar-container">
   <div class="days-row">
     <p>Mon</p>
@@ -15,7 +13,9 @@
   <div class="dates-row" *ngFor="let row of cellValues">
     <div class="date-cell" *ngFor="let cell of row">
       <ng-container *ngIf="!cell.empty">
-        <span>{{ cell.value }}</span>
+        <div [ngClass]="cell.classes">
+          <span class="day" (click)="viewDay(cell)">{{ cell.value }}</span>
+        </div>
         <div *ngFor="let event of cell.events">
           <span class="badge badge-secondary event-summary">{{ (event.summary.length > SUMMARY_MAX_LENGTH) ? (event.summary | slice:0:(SUMMARY_MAX_LENGTH - 3)) + '...' : event.summary }}</span>
         </div>
@@ -23,3 +23,5 @@
     </div>
   </div>
 </div>
+
+<app-day-management *ngIf="manageDay" [manageDay]="manageDay"></app-day-management>

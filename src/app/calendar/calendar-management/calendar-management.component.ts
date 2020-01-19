@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {CalendarService} from '../calendar.service';
 import * as moment from 'moment';
 
-interface CellValue {
+export interface CellValue {
   value: number;
   empty: boolean;
   events: CalendarEvent[];
+  classes: string[];
 }
 
 interface CalendarEvent {
@@ -22,6 +23,8 @@ interface CalendarEvent {
 export class CalendarManagementComponent implements OnInit {
   private events$;
   private cellValues: CellValue[][];
+
+  manageDay: CellValue;
 
   SUMMARY_MAX_LENGTH = 20;
 
@@ -68,27 +71,33 @@ export class CalendarManagementComponent implements OnInit {
         cellValues.push([]);
       }
 
+      const cell: CellValue = {
+        value: 0,
+        empty: true,
+        events: [],
+        classes: []
+      };
+
       if (i < firstDayOfMonth - 1) {
-        cellValues[Math.floor(i / 7)].push({
-          value: 0,
-          empty: true,
-          events: []
-        });
+        cellValues[Math.floor(i / 7)].push(cell);
       } else if (i < (firstDayOfMonth - 1) + daysInMonth) {
-        cellValues[Math.floor(i / 7)].push({
-          value: i - (firstDayOfMonth - 1) + 1,
-          empty: false,
-          events: []
-        });
+        cell.value = i - (firstDayOfMonth - 1) + 1;
+        cell.empty = false;
+
+        cellValues[Math.floor(i / 7)].push(cell);
       } else {
-        cellValues[Math.floor(i / 7)].push({
-          value: 0,
-          empty: true,
-          events: []
-        });
+        cellValues[Math.floor(i / 7)].push(cell);
       }
     }
 
     this.cellValues = cellValues;
+  }
+
+  viewDay(cell: CellValue) {
+    this.cellValues.forEach(value => value.forEach(value1 => value1.classes = []));
+
+    cell.classes.push('badge');
+    cell.classes.push('badge-primary');
+    this.manageDay = cell;
   }
 }
