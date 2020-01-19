@@ -18,6 +18,7 @@ import {CalendarManagementComponent} from './calendar/calendar-management/calend
 import {CreateEventComponent} from './calendar/create-event/create-event.component';
 import {NotificationHostComponent} from './app-notifications/notification-host/notification-host.component';
 import {DayManagementComponent} from './calendar/day-management/day-management.component';
+import {EventManagementComponent} from './calendar/event-management/event-management.component';
 
 const keycloakService = new KeycloakService();
 
@@ -33,7 +34,8 @@ const keycloakService = new KeycloakService();
     CalendarManagementComponent,
     CreateEventComponent,
     NotificationHostComponent,
-    DayManagementComponent
+    DayManagementComponent,
+    EventManagementComponent
   ],
   imports: [
     BrowserModule,

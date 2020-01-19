@@ -9,7 +9,7 @@ export interface CellValue {
   classes: string[];
 }
 
-interface CalendarEvent {
+export interface CalendarEvent {
   summary: string;
   description: string;
   startDate: Date;
@@ -25,6 +25,7 @@ export class CalendarManagementComponent implements OnInit {
   private cellValues: CellValue[][];
 
   manageDay: CellValue;
+  manageEvent: CalendarEvent;
 
   SUMMARY_MAX_LENGTH = 20;
 
@@ -94,10 +95,18 @@ export class CalendarManagementComponent implements OnInit {
   }
 
   viewDay(cell: CellValue) {
+    this.manageEvent = null;
     this.cellValues.forEach(value => value.forEach(value1 => value1.classes = []));
 
     cell.classes.push('badge');
     cell.classes.push('badge-primary');
     this.manageDay = cell;
+  }
+
+  viewEvent(event: CalendarEvent) {
+    this.manageDay = null;
+    this.cellValues.forEach(value => value.forEach(value1 => value1.classes = []));
+
+    this.manageEvent = event;
   }
 }

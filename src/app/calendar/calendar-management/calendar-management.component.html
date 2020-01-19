@@ -17,7 +17,9 @@
           <span class="day" (click)="viewDay(cell)">{{ cell.value }}</span>
         </div>
         <div *ngFor="let event of cell.events">
-          <span class="badge badge-secondary event-summary">{{ (event.summary.length > SUMMARY_MAX_LENGTH) ? (event.summary | slice:0:(SUMMARY_MAX_LENGTH - 3)) + '...' : event.summary }}</span>
+          <span class="badge badge-secondary event-summary" (click)="viewEvent(event)">
+            {{ (event.summary.length > SUMMARY_MAX_LENGTH) ? (event.summary | slice:0:(SUMMARY_MAX_LENGTH - 3)) + '...' : event.summary }}
+          </span>
         </div>
       </ng-container>
     </div>
@@ -25,3 +27,5 @@
 </div>
 
 <app-day-management *ngIf="manageDay" [manageDay]="manageDay"></app-day-management>
+
+<app-event-management *ngIf="manageEvent" [manageEvent]="manageEvent"></app-event-management>
