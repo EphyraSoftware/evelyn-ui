@@ -21,6 +21,9 @@ export class CreateEventComponent implements OnInit {
 
   startDate: NgbDateStruct;
   endDate: NgbDateStruct;
+  formGroupClasses: string[] = [];
+  startDateClasses: string[] = [];
+  endDateClasses: string[] = [];
 
   private static toDate(ngbDate: NgbDateStruct) {
     return new Date(ngbDate.year, ngbDate.month - 1, ngbDate.day);
@@ -29,7 +32,12 @@ export class CreateEventComponent implements OnInit {
   ngOnInit() {
   }
 
-  createEvent() {
+  createEvent(eventForm: HTMLFormElement) {
+    const isValid = this.validateCreateEventForm(eventForm);
+    if (!isValid) {
+      return;
+    }
+
     const model = this.newEventForm.getRawValue();
     model.startDate = CreateEventComponent.toDate(this.startDate);
     model.endDate = CreateEventComponent.toDate(this.endDate);
@@ -39,11 +47,36 @@ export class CreateEventComponent implements OnInit {
     });
   }
 
+  private validateCreateEventForm(eventForm: HTMLFormElement) {
+    let isValid = true;
+
+    if (!eventForm.checkValidity()) {
+      this.formGroupClasses.push('was-validated');
+      isValid = false;
+    }
+
+    if (!this.startDate) {
+      this.startDateClasses.push('invalid-date');
+      isValid = false;
+    }
+
+    if (!this.endDate) {
+      this.endDateClasses.push('invalid-date');
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
   updateStartDate($event: NgbDate) {
+    this.startDateClasses = [];
+
     this.startDate = $event;
   }
 
   updateEndDate($event: NgbDate) {
+    this.endDateClasses = [];
+    
     this.endDate = $event;
   }
 }

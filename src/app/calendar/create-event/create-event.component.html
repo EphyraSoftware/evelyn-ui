@@ -1,10 +1,11 @@
 <h5>Create a new task</h5>
-<form [formGroup]="newEventForm">
-  <div class="form-group">
+<form [formGroup]="newEventForm" #eventForm>
+  <div class="form-group" [ngClass]="formGroupClasses">
     <label for="summaryInput">Summary</label>
-    <input type="text" class="form-control" id="summaryInput" maxlength="50" formControlName="summary" />
+    <input type="text" class="form-control" id="summaryInput" maxlength="50" formControlName="summary" required="required" />
+    <div class="invalid-feedback">Add a short summary to describe the event.</div>
   </div>
-  <div class="form-group">
+  <div class="form-group" [ngClass]="formGroupClasses">
     <label for="descriptionInput">Description</label>
     <textarea type="text" class="form-control" id="descriptionInput" maxlength="50" formControlName="description"></textarea>
   </div>
@@ -12,15 +13,17 @@
     <div class="col">
       <div class="form-group">
         <p>Start date</p>
-        <ngb-datepicker (select)="updateStartDate($event)"></ngb-datepicker>
+        <ngb-datepicker (select)="updateStartDate($event)" [ngClass]="startDateClasses"></ngb-datepicker>
+        <div class="invalid-feedback">Start date is required.</div>
       </div>
     </div>
     <div class="col">
       <div class="form-group">
         <p>End date</p>
-        <ngb-datepicker (select)="updateEndDate($event)"></ngb-datepicker>
+        <ngb-datepicker (select)="updateEndDate($event)" [ngClass]="endDateClasses"></ngb-datepicker>
+        <div class="invalid-feedback">End date is required.</div>
       </div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary" (click)="createEvent()">Create</button>
+  <button type="button" class="btn btn-primary" (click)="createEvent(eventForm)">Create</button>
 </form>
