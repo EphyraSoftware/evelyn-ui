@@ -3,6 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AppAuthGuard} from './auth/app-auth-guard.guard';
 import {HomeComponent} from './home/home.component';
 import {ManageProfileComponent} from './profile/manage-profile/manage-profile.component';
+import {CalendarContainerComponent} from './calendar/calendar-container/calendar-container.component';
 
 const routes: Routes = [{
   path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [{
 }, {
   path: 'profile',
   component: ManageProfileComponent,
+  canActivate: [AppAuthGuard]
+}, {
+  path: 'calendar',
+  component: CalendarContainerComponent,
   canActivate: [AppAuthGuard]
 }];
 
