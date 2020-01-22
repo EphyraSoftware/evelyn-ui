@@ -20,6 +20,8 @@ import {NotificationHostComponent} from './app-notifications/notification-host/n
 import {DayManagementComponent} from './calendar/day-management/day-management.component';
 import {EventManagementComponent} from './calendar/event-management/event-management.component';
 import {CalendarContainerComponent} from './calendar/calendar-container/calendar-container.component';
+import {PopoutPanelComponent} from './popout-panel/popout-panel.component';
+import {PopoutHostDirective} from './popout-panel/popout-host.directive';
 
 const keycloakService = new KeycloakService();
 
@@ -37,7 +39,9 @@ const keycloakService = new KeycloakService();
     NotificationHostComponent,
     DayManagementComponent,
     EventManagementComponent,
-    CalendarContainerComponent
+    CalendarContainerComponent,
+    PopoutPanelComponent,
+    PopoutHostDirective
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,7 @@ const keycloakService = new KeycloakService();
     provide: KeycloakService,
     useValue: keycloakService
   }],
-  entryComponents: [AppComponent]
+  entryComponents: [AppComponent, CreateEventComponent]
 })
 export class AppModule implements DoBootstrap {
   ngDoBootstrap(app) {
