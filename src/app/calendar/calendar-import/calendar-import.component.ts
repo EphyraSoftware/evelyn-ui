@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
@@ -9,6 +9,8 @@ import {environment} from '../../../environments/environment';
   styleUrls: ['./calendar-import.component.scss']
 })
 export class CalendarImportComponent implements OnInit {
+  @Output() importCompleted = new EventEmitter<never>();
+
   calendarImportForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
@@ -31,7 +33,10 @@ export class CalendarImportComponent implements OnInit {
     formData.append('calendarFile', this.calendarImportForm.get('calendarFile').value);
 
     this.httpClient.post(`${environment.serviceUrl}/calendars/import`, formData).subscribe(
-      (res) => console.log(res),
+      (res) => {
+        console.log(res);
+        this.importCompleted.emit();
+      },
       (err) => console.log(err)
     );
   }

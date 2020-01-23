@@ -21,6 +21,7 @@ import {DayManagementComponent} from './calendar/day-management/day-management.c
 import {EventManagementComponent} from './calendar/event-management/event-management.component';
 import {CalendarContainerComponent} from './calendar/calendar-container/calendar-container.component';
 import {CreateEventModalComponent} from './calendar/create-event-modal/create-event-modal.component';
+import {CalendarImportModalComponent} from './calendar/calendar-import-modal/calendar-import-modal.component';
 
 const keycloakService = new KeycloakService();
 
@@ -39,7 +40,8 @@ const keycloakService = new KeycloakService();
     DayManagementComponent,
     EventManagementComponent,
     CalendarContainerComponent,
-    CreateEventModalComponent
+    CreateEventModalComponent,
+    CalendarImportModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ const keycloakService = new KeycloakService();
     provide: KeycloakService,
     useValue: keycloakService
   }],
-  entryComponents: [AppComponent, CreateEventModalComponent]
+  entryComponents: [AppComponent, CreateEventModalComponent, CalendarImportModalComponent]
 })
 export class AppModule implements DoBootstrap {
   ngDoBootstrap(app) {
