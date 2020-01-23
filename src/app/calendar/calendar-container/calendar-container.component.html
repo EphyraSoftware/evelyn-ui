@@ -1,4 +1,7 @@
 <div class="container">
-  <a routerLink="/home">Home</a>
+  <p><a routerLink="/home">Home</a></p>
+  <div class="btn-group" role="group" aria-label="Calendar controls">
+    <button type="button" class="btn btn-secondary" (click)="open()">Create</button>
+  </div>
   <app-calendar-management></app-calendar-management>
 </div>

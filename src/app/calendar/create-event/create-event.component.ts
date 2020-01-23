@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {NgbDate, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {CalendarService} from '../calendar.service';
@@ -9,6 +9,8 @@ import {CalendarService} from '../calendar.service';
   styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
+
+  @Output() eventCreated = new EventEmitter<never>();
 
   constructor(private formBuilder: FormBuilder, private calendarService: CalendarService) {
     this.newEventForm = this.formBuilder.group({
@@ -44,6 +46,7 @@ export class CreateEventComponent implements OnInit {
 
     this.calendarService.createEvent(model).subscribe(response => {
       console.log(response);
+      this.eventCreated.emit();
     });
   }
 
@@ -76,7 +79,7 @@ export class CreateEventComponent implements OnInit {
 
   updateEndDate($event: NgbDate) {
     this.endDateClasses = [];
-    
+
     this.endDate = $event;
   }
 }

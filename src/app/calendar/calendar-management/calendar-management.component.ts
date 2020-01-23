@@ -24,6 +24,8 @@ export class CalendarManagementComponent implements OnInit {
   private events$;
   private cellValues: CellValue[][];
 
+  calendarPageSummary: string;
+
   manageDay: CellValue;
   manageEvent: CalendarEvent;
 
@@ -35,11 +37,12 @@ export class CalendarManagementComponent implements OnInit {
 
   ngOnInit() {
     const today = moment();
+
+    this.calendarPageSummary = today.format('MMM YYYY');
+
     const daysInMonth = today.daysInMonth();
     const firstDayOfMonth = today.clone().date(1);
     const lastDayOfMonth = today.clone().date(daysInMonth);
-
-    console.log(this.cellValues);
 
     this.calendarService.getEvents().subscribe((events: CalendarEvent[]) => {
       events.filter(event => {
