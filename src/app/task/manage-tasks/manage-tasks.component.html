@@ -4,8 +4,15 @@
     <div class="col-sm">
       <div class="card mb-1" >
         <div class="card-body">
+          <span class="float-right">{{ task.displayDate }}</span>
           <h5 class="card-title">{{ task.title }}</h5>
           <p class="card-text">{{ task.description }}</p>
+          <form class="float-right">
+            <div class="form-group form-check">
+              <input type="checkbox" class="form-check-input" id="completed">
+              <label class="form-check-label" for="completed">Completed</label>
+            </div>
+          </form>
         </div>
       </div>
     </div>
