@@ -5,6 +5,8 @@ import {map} from 'rxjs/operators';
 import * as moment from 'moment';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import * as jp from 'fast-json-patch';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {UpdateTaskComponent} from '../update-task/update-task.component';
 
 export interface Task {
   taskId: string;
@@ -25,7 +27,7 @@ export class ManageTasksComponent implements OnInit {
 
   completedForms: FormGroup[];
 
-  constructor(private taskService: TaskService, private formBuilder: FormBuilder) { }
+  constructor(private taskService: TaskService, private formBuilder: FormBuilder, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.tasks$ = this.taskService.getTasks().pipe(
@@ -62,5 +64,16 @@ export class ManageTasksComponent implements OnInit {
         console.log(result);
       });
     };
+  }
+
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task).subscribe(val => {
+      // Task deleted
+    });
+  }
+
+  openUpdate(task: Task) {
+    const modalRef = this.modalService.open(UpdateTaskComponent, { size: 'lg' });
+    modalRef.componentInstance.task = task;
   }
 }

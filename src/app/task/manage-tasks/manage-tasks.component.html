@@ -4,7 +4,11 @@
     <div class="col-sm">
       <div class="card mb-1" >
         <div class="card-body">
-          <span class="float-right">{{ task.displayDate }}</span>
+          <div class="btn-group float-right" role="group" aria-label="Simple task controls">
+            <button type="button" class="btn btn-secondary" (click)="deleteTask(task)">Delete</button>
+            <button type="button" class="btn btn-secondary" (click)="openUpdate(task)">Change</button>
+          </div>
+          <span class="float-right mr-2">{{ task.displayDate }}</span>
           <h5 class="card-title">{{ task.title }}</h5>
           <p class="card-text">{{ task.description }}</p>
           <form class="float-right" [formGroup]="completedForms[i]">
