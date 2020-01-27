@@ -7,6 +7,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import * as jp from 'fast-json-patch';
 
 export interface Task {
+  taskId: string;
   title: string;
   description: string;
   completed: boolean;
@@ -45,14 +46,21 @@ export class ManageTasksComponent implements OnInit {
         completed: this.formBuilder.control(task.completed)
       });
 
-      result.valueChanges.subscribe(value => {
-        const updatedTask = Object.assign({}, task);
-        updatedTask.completed = value.completed;
-
-        console.log(jp.compare(task, updatedTask));
-      });
+      result.valueChanges.subscribe(this.updateHandler(task));
 
       return result;
     });
+  }
+
+  private updateHandler(task: Task) {
+    return value => {
+      const updatedTask = Object.assign({}, task);
+      updatedTask.completed = value.completed;
+
+      const patch = jp.compare(task, updatedTask);
+      this.taskService.patchTask(task.taskId, patch).subscribe(result => {
+        console.log(result);
+      });
+    };
   }
 }
