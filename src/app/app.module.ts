@@ -23,6 +23,8 @@ import {CalendarContainerComponent} from './calendar/calendar-container/calendar
 import {CreateEventModalComponent} from './calendar/create-event-modal/create-event-modal.component';
 import {CalendarImportModalComponent} from './calendar/calendar-import-modal/calendar-import-modal.component';
 import {UpdateTaskComponent} from './task/update-task/update-task.component';
+import {CreateTodoComponent} from './todo/create-todo/create-todo.component';
+import {ManageTodosComponent} from './todo/manage-todos/manage-todos.component';
 
 const keycloakService = new KeycloakService();
 
@@ -43,7 +45,9 @@ const keycloakService = new KeycloakService();
     CalendarContainerComponent,
     CreateEventModalComponent,
     CalendarImportModalComponent,
-    UpdateTaskComponent
+    UpdateTaskComponent,
+    CreateTodoComponent,
+    ManageTodosComponent
   ],
   imports: [
     BrowserModule,
