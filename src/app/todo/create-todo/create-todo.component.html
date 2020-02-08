@@ -4,5 +4,9 @@
     <label for="nameInput">Name</label>
     <input type="text" class="form-control" id="nameInput" maxlength="50" formControlName="name" />
   </div>
+  <p>Items</p>
+  <div class="form-group" *ngFor="let item of items; index as i">
+    <input type="text" class="form-control" maxlength="50" [formControl]="item" (focusout)="itemFocusLost(i)" (keyup)="itemKeyUp(i)" />
+  </div>
   <button type="button" class="btn btn-primary" (click)="createTodo()">Create</button>
 </form>
