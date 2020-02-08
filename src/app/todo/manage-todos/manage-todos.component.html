@@ -1,3 +1,6 @@
 <div *ngFor="let todo of todos$ | async">
   <p>{{ todo.name }}</p>
+  <ul>
+    <li *ngFor="let item of todo.items">{{ item.text }}</li>
+  </ul>
 </div>

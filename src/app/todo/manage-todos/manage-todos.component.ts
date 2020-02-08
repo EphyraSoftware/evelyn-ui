@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TodoService} from '../todo.service';
+import {Todo, TodoService} from '../todo.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -8,12 +8,11 @@ import {Observable} from 'rxjs';
   styleUrls: ['./manage-todos.component.scss']
 })
 export class ManageTodosComponent implements OnInit {
-  todos$: Observable<any>;
+  todos$: Observable<Todo[]>;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.todos$ = this.todoService.getTodos();
   }
-
 }
