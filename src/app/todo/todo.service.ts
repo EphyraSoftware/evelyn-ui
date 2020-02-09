@@ -5,9 +5,11 @@ import {Observable} from 'rxjs';
 
 export interface TodoItem {
   text: string;
+  complete: boolean;
 }
 
 export interface Todo {
+  id: string;
   name: string;
   items: TodoItem[];
 }
@@ -25,5 +27,9 @@ export class TodoService {
 
   getTodos(): Observable<Todo[]> {
     return this.http.get(`${environment.serviceUrl}/todos`) as Observable<Todo[]>;
+  }
+
+  updateItem(id: string, index: number, item: TodoItem) {
+    return this.http.put(`${environment.serviceUrl}/todos/${id}/items/${index}`, item);
   }
 }

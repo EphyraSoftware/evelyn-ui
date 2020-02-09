@@ -1,0 +1,12 @@
+<fa-icon [icon]="stateIcon" (click)="toggleItems()" class="todo-expand mr-2"></fa-icon>
+<h5 class="todo-name">{{ todo.name }}</h5>
+<ng-container *ngIf="open">
+  <div class="row" *ngFor="let item of todo.items; index as i">
+    <div class="col-sm-10"><span class="ml-3">{{ item.text }}</span></div>
+    <div class="col-sm-2">
+      <form>
+        <input type="checkbox" class="form-control" [checked]="checkedValues[i]" (click)="toggleItemComplete(i)" />
+      </form>
+    </div>
+  </div>
+</ng-container>

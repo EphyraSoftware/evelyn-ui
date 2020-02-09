@@ -25,6 +25,8 @@ import {CalendarImportModalComponent} from './calendar/calendar-import-modal/cal
 import {UpdateTaskComponent} from './task/update-task/update-task.component';
 import {CreateTodoComponent} from './todo/create-todo/create-todo.component';
 import {ManageTodosComponent} from './todo/manage-todos/manage-todos.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {ManageTodoComponent} from './todo/manage-todo/manage-todo.component';
 
 const keycloakService = new KeycloakService();
 
@@ -47,7 +49,8 @@ const keycloakService = new KeycloakService();
     CalendarImportModalComponent,
     UpdateTaskComponent,
     CreateTodoComponent,
-    ManageTodosComponent
+    ManageTodosComponent,
+    ManageTodoComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,8 @@ const keycloakService = new KeycloakService();
     HttpClientModule,
     FormsModule,
     KeycloakAngularModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [{
     provide: KeycloakService,
