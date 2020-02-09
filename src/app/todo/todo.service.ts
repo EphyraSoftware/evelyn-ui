@@ -11,6 +11,7 @@ export interface TodoItem {
 export interface Todo {
   id: string;
   name: string;
+  expiry: Date;
   items: TodoItem[];
 }
 

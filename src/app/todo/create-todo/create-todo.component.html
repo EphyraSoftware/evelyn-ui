@@ -8,5 +8,25 @@
   <div class="form-group" *ngFor="let item of items; index as i">
     <input type="text" class="form-control" maxlength="50" [formControl]="item" (focusout)="itemFocusLost(i)" (keyup)="itemKeyUp(i)" />
   </div>
+  <p>Expiry</p>
+  <p class="text-muted">
+    Todos should be short lived, they help you keep track of things to do in the near future.
+    Have Evelyn delete your todos when they're no longer relevant.
+  </p>
+  <div class="form-check mb-2">
+    <input type="checkbox" id="neverExpire" class="form-check-input" formControlName="neverExpire" />
+    <label for="neverExpire" class="form-check-label">Don't expire?</label>
+  </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col">
+        <ngb-datepicker [(ngModel)]="expiryDate" [ngModelOptions]="{standalone: true}" [minDate]="today"></ngb-datepicker>
+      </div>
+      <div class="col">
+        <ngb-timepicker [(ngModel)]="expiryTime" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+      </div>
+    </div>
+  </div>
+
   <button type="button" class="btn btn-primary" (click)="createTodo()">Create</button>
 </form>
