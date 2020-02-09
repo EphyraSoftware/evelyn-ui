@@ -30,14 +30,16 @@ export class CreateTodoComponent implements OnInit {
   }
 
   createTodo() {
-    let expiry = null;
+    let expireAt = null;
     if (!this.newTodoForm.get('neverExpire').value) {
-      expiry = new Date(this.expiryDate.year, this.expiryDate.month - 1, this.expiryDate.day, this.expiryTime.hour, this.expiryTime.minute);
+      expireAt = new Date(
+        this.expiryDate.year, this.expiryDate.month - 1, this.expiryDate.day,
+        this.expiryTime.hour, this.expiryTime.minute);
     }
 
     const createModel = {
       name: this.newTodoForm.get('name').value,
-      expiry: expiry,
+      expiry: expireAt,
       initialItems: (this.newTodoForm.get('items') as FormArray).value.filter(i => i).map(item => {
         return {
           text: item
